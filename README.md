@@ -1,25 +1,8 @@
 # monty-hall-simulator
-import random
+Simulates 100,000 iterations of the Monty Hall problem to prove that 
+switching doors wins ~66.7% of the time.
 
-iterations = 100000
-car_count = 0
-none_count = 0
+The host always reveals a goat door, so your original pick stays at 1/3 
+probability. Since probabilities must sum to 1, the remaining door carries 2/3.
 
-for i in range(iterations):
-    doors = ['none', 'none', 'none']
-    doors[random.randint(0,2)] = 'car'
-
-    if doors[1] == 'none':
-        doors.pop(1)
-    elif doors[2] == 'none':
-        doors.pop(2)
-
-    chosen_door = doors[1]
-
-    if chosen_door == 'car':
-        car_count += 1
-    else:
-        none_count += 1
-
-print(f'Car: {car_count} = {round(car_count/iterations*100, 1)}%')
-print(f'None: {none_count} = {round(none_count/iterations*100, 1)}%')
+Run monty_hall.py to see the results and generate the convergence graph.
